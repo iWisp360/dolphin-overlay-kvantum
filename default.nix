@@ -16,8 +16,8 @@ final: prev: {
         nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ prev.makeWrapper ];
         postInstall = (oldAttrs.postInstall or "") + ''
           wrapProgram $out/bin/dolphin \
-              --set QT_STYLE_OVERRIDE kvantum
-              --set QT_QPA_PLATFORMTHEME qt6ct
+              --set QT_STYLE_OVERRIDE "kvantum"
+              --set QT_QPA_PLATFORMTHEME "qt6ct"
               --set XDG_CONFIG_DIRS "${prev.libsForQt5.kservice}/etc/xdg:$XDG_CONFIG_DIRS" \
               --run "${kprev.kservice}/bin/kbuildsycoca6 --noincremental ${prev.libsForQt5.kservice}/etc/xdg/menus/applications.menu"
         '';
